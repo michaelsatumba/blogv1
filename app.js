@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require('lodash');
-const favicon = require('serve-favicon');
 
 
 
@@ -66,7 +65,7 @@ app.get("/posts/:postName", function(req, res){
   });
 });
 
-app.use(favicon(__dirname + '/favicon.ico'));
+
 
 
 
