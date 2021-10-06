@@ -65,6 +65,14 @@ app.get("/posts/:postName", function(req, res){
   });
 });
 
+  app.post("/posts/:postName", function(req, res) {
+
+    posts = [];
+    res.redirect("/");
+
+  });
+
+
 
 
 
