@@ -66,8 +66,10 @@ app.get("/posts/:postName", function(req, res){
 });
 
   app.post("/posts/:postName", function(req, res) {
+    const requestedTitle = _.lowerCase(req.params.postName);
 
-    posts = [];
+    const del = posts.filter(post => post != requestedTitle)
+    console.log(del);
     res.redirect("/");
 
   });
