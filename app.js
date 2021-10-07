@@ -9,7 +9,7 @@ const _ = require('lodash');
 
 const homeStartingContent = "Hello, my name is Michael Satumba and I made this website. You can create a post and delete them all if you want.";
 const aboutContent = "A little about me: I love spam.";
-const contactContent = "If the phone isn't ringing I know it's you";
+const contactContent = "If the phone isn't ringing I know it's you.";
 
 const app = express();
 
