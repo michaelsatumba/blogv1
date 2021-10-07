@@ -68,7 +68,8 @@ app.get("/posts/:postName", function(req, res){
   app.post("/posts/:postName", function(req, res) {
     const requestedTitle = _.lowerCase(req.params.postName);
 
-    const del = posts.filter(post => post != requestedTitle)
+    const del = posts.filter(post => post.postTitle !== requestedTitle)
+    posts = del;
     console.log(del);
     res.redirect("/");
 
@@ -92,5 +93,5 @@ if (port == null || port == "") {
 
 
 app.listen(port, function() {
-  console.log("Server started successfully.");
+  console.log("Server started successfully on port 8000");
 });
