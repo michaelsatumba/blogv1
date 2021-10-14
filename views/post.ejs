@@ -9,8 +9,9 @@
   </p>
 
 
-
-  <form class="item" action="/posts/:postName" method="post">
+  <form class="item" action="/posts/<%= title %>" method="post">
+    <!-- You were not passing the actual post title in the action URL below. -->
+  <!-- <form class="item" action="/posts/:postName" method="post"> --> 
     <button type="submit" class="btn btn-danger" name="button">Delete Post</button>
   </form>
 
