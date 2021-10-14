@@ -50,27 +50,42 @@ app.post("/compose", function(req, res) {
 
 app.get("/posts/:postName", function(req, res){
   const requestedTitle = _.lowerCase(req.params.postName);
-
-
-  posts.forEach(function(post) {
-    const store = _.lowerCase(post.postTitle);
+  let flag = 0; // to check if a post if found or not
+  for(let i = 0; i < posts.length; i++){
+    const store = _.lowerCase(posts[i].postTitle);
     if (store === requestedTitle) {
-      res.render("post", {
-        title: post.postTitle,
-        content: post.postBody
-        });
-    } else {
-      console.log("error");
+      flag = 1;
+       res.render("post", {
+        title: posts[i].postTitle,
+        content: posts[i].postBody
+      });
+      break;
     }
-  });
+  }
+  if(flag===0) console.log('Post not found');
+
+  //THE FUNCTION BELOW WAS THROWING AN ERROR BECAUSE THE forEach() FUNCTION DIDN'T END EVEN AFTER RENDERING THE VIEW.
+  // posts.forEach(function(post) {
+  //   const store = _.lowerCase(post.postTitle);
+  //   if (store === requestedTitle) {
+  //     res.render("post", {
+  //       title: post.postTitle,
+  //       content: post.postBody
+  //       });
+  //   } else {
+  //     console.log("error");
+  //   }
+  // });
 });
 
   app.post("/posts/:postName", function(req, res) {
-
-    posts = [];
+    const requestedTitle = _.lowerCase(req.params.postName);
+    const del = posts.filter(post => _.lowerCase(post.postTitle) !== requestedTitle)
+    posts = del;
+    console.log(del);
     res.redirect("/");
-
   });
+
 
 
 
@@ -90,5 +105,5 @@ if (port == null || port == "") {
 
 
 app.listen(port, function() {
-  console.log("Server started successfully.");
+  console.log("Server started successfully on port 8000");
 });
